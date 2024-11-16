@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>0bjects</title>
+  </head>
+  <body>
+    <script>
+      /*
+        const product = {
+            name : 'rice',
+            price : 1900,  //price or name on left side is called property
+            quantity : 15
+        };
+
+        console.log(typeof product);  //check type of
+
+        console.log(product);
+        console.log(product.price);
+        console.log(product.quantity);
+
+        product.name = 'wheat' ; //we can change property
+        console.log(product);
+
+        product.quality = 'A grade'; //we can add proprty to object
+        console.log(product);
+
+        delete product.quantity; // we can delete property
+        console.log(product);
+        */
+
+        /*
+        const product1 = {
+          name: 'shirt',
+          price: 8000,
+          'delivery-time' : '2 days', //due to hyphen ide confuses with minus
+          rating :{
+             stars: 4.5,
+             count: 89
+          },
+          fun : function function1() {
+            console.log('function inside object');
+          }
+        };
+
+        console.log(product1);
+        console.log(product1.name);
+        console.log(product1['name']);  //bracket notation works same as dot(.) notation
+        console.log(product1['delivery-time']);  //here dot notation won't work
+
+        console.log(product1.rating.count);
+        product1.fun();
+        */
+        
+
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+        console.log('Good Morning'.toLowerCase())
+
+        const object1 = {
+          message: 'hello'
+        };
+        const object2 = object1;
+
+        object1.message = 'gidimba';
+        console.log(object1);
+        console.log(object2);
+
+        const object3 = {
+          message: 'gidimba'
+        };
+        console.log(object3 === object1);
+        console.log(object2 === object1);
+
+        const object4 = {
+          message: 'hidimba'
+        };
+       // const message = object4.message;
+       const { message } = object4;
+       console.log(message)
+
+
+       const object5 = {
+        //message: message
+        message,
+       // method:  function function1() {
+       //   console.log('bhupendra jogi');
+       // }
+       method() {
+        console.log('bhupendra jogi');
+       }
+       };
+       console.log(object5);
+       object5.method();
+    </script>
+  </body>
+</html>
