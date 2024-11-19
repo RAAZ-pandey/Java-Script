@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <title>Calculator</title>
+  </head>
   <body>
+
+    <p class="Js-calculation"></p>
+
     <p>
       <button onclick="
         updateCalculation('1');
@@ -71,7 +76,9 @@
         // it can potentially be given harmful code to run.
         // Only use eval() for learning purposes.
         calculation = eval(calculation);
-        console.log(calculation);
+        displayCalculation();
+
+        localStorage.setItem('calculation',calculation);
       ">=</button>
 
       <button onclick="
@@ -82,16 +89,24 @@
     <p>
       <button onclick="
         calculation = '';
-        console.log(calculation);
+        displayCalculation();
+
+        localStorage.setItem('calculation',calculation);
       ">Clear</button>
     </p>
 
+
     <script>
-      let calculation = '';
+      let calculation = localStorage.getItem('calculation') || '';
 
       function updateCalculation(value) {
         calculation += value;
-        console.log(calculation);
+        displayCalculation();
+        localStorage.setItem('calculation',calculation);
+      }
+
+      function displayCalculation() {
+        document.querySelector('.Js-calculation').innerHTML = calculation;
       }
     </script>
   </body>
