@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM projects</title>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button  onclick="
+     subsribe();
+    "class="subscribe-button">Subscribe</button> 
+
+    <p>Amazon shipping calculator</p>
+    <input placeholder="Cost of order" class="cost-input" onkeydown="
+     handleCostKeydown(event);
+    ">
+    <button onclick="
+      calculatetotal();
+    ">calculate</button>
+    <p class="total-cost"></p>
+
+    <script>
+
+      function handleCostKeydown(event){
+        console.log(event.key);
+        if(event.key === 'Enter'){
+          calculatetotal();
+        }
+      }
+
+
+      function calculatetotal(){
+        const inputElement = document.querySelector('.cost-input');
+        let cost =Number(inputElement.value);  // Number is predefined js keyword to convert string in to number this also works vice-versa
+        //String(25);
+
+        if(cost < 40){
+          cost += 10;
+        }
+
+        document.querySelector('.total-cost').innerHTML = `$${cost}`;
+      }
+
+
+      function subsribe(){
+        const buttonElement = document.querySelector('.subscribe-button');
+        if(buttonElement.innerHTML === 'Subscribe') {
+          buttonElement.innerHTML = 'Subscribed';
+        }else{
+          buttonElement.innerHTML = 'Subscribe';
+        }
+      }
+      
+    </script>
+  </body>
+</html>
