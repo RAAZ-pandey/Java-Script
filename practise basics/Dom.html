@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+
+    <button>hello</button>
+    <button class="Js-button">Second button</button>
+    <script>
+
+      console.log(document.querySelector('button').innerHTML); //queryselector helps us to convert any part of page to into object 
+      document.querySelector('button').innerHTML = 'changed';
+
+      const buttonElement = document.querySelector('.Js-button');
+      console.log(buttonElement);
+        /*
+      console.log(document.title); // can access title of page using document
+      document.title = 'changed';
+
+      console.log(document.body);  // here we converted whole body of page into object
+      console.log(typeof document.body); // see it saying object
+
+      console.log(document.body.innerHTML);
+      // now it is an ↑ object so we can make it store anything like any string , number or a js code itself
+      document.body.innerHTML = '<button> my gosh </button>';  //storing html code
+      */
+
+     /*
+     //  document.body.innerHTML <- this stores  whole HTMLpage as an object 
+      document.body.innerHTML='hello'
+      document.title = 'god'; */
+    </script>
+  </body>
+</html>
