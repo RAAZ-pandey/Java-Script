@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loop</title>
+  </head>
+  <body>
+    <script>
+     
+     let i = 1;
+     while(i<=7){
+      console.log(i);
+      i++;
+     }
+
+     for(let i=1; i<=7; i++){
+       console.log(i);
+     }
+
+ // Array using loop :- indexing and accessing
+     const todolist = [
+      'go',
+       'run',
+        'see',
+         'eat'
+        ];
+
+     for(let index = 0; index <= todolist.length - 1; index++) {
+      const value = todolist[index];
+      console.log(value);
+     }
+
+     const nums = [15, 17, 3];
+     let total = 0;
+
+     for(let i = 0; i < nums.length; i++){
+      const num = nums[i];
+      total += num;
+     }
+     console.log(total);
+    </script>
+  </body>
+</html>
