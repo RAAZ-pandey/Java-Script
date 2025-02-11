@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array practise</title>
+  </head>
+  <body>
+    <script>
+      arr1 = [1, 20 , 32 , 55, 58];
+
+        function getLastValue(array){
+         const lastIndex = array.length - 1;
+          console.log(array[lastIndex]); 
+        }
+
+      getLastValue(arr1);
+
+      function arraySwap(array){
+        let a = array[0];
+        const lastIndex = array.length - 1;
+        array[0] = array[lastIndex]
+        array[lastIndex] = a;
+        console.log(array);
+      }
+
+      arraySwap(arr1);
+/*
+      const result = [];
+      for(let i = 0; i< arr1.length; i++){
+        result.push(arr1[i] + 1);
+      }
+      console.log(result); */
+
+      function addOne(array){
+        const result = [];
+        for(let i = 0; i< array.length; i++){
+          result.push(array[i] + 1);
+        }
+
+        return result;
+      }
+
+      console.log(addOne(arr1));
+      console.log(addOne([-2, -1, 0, 99]));
+    </script>
+  </body>
+</html>
