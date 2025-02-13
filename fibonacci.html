@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fibonacci series</title>
+  </head>
+  <body>
+    <script>
+         function sumevenfibonacci(){
+              let a = 1, b= 2;
+              let sum = 2;
+
+              let NextFibbonacci ;
+
+              while(true)
+              {
+                NextFibbonacci = a+b;
+                  if(NextFibbonacci > 4000000){
+                      break;
+                  }
+
+                  if(NextFibbonacci % 2 == 0)
+                  {
+                    sum+=NextFibbonacci;
+                  
+                  a=b;
+                  b=NextFibbonacci;
+                  }
+                  return sum ;
+                
+              }
+            }
+              console.log(sumevenfibonacci());
+         
+
+        // function evensum(limit){
+        //   let a= 1;
+        //   let b = 2;
+        //   let sum =0;
+        //   while (a<=limit){
+        //     sum+=a;
+        //     a,b = b,a+b;
+
+        //   }
+        //   return sum;
+        // }
+        // console.log(evensum(4000000));
+        
+    </script>
+  </body>
+</html>
