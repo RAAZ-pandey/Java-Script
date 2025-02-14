@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timeout Function</title>
+  </head>
+  <body>
+    <button class="js-button" onclick="change()">start</button>
+    <br>
+    <button class="button-js" onclick="display();">Add to cart</button>
+    <script>
+        function change(){
+          const button = document.querySelector('.js-button');
+
+          button.innerHTML = 'Loading...';
+          setTimeout(function(){
+            button.innerHTML = 'Finished!';
+          },1000);
+        }
+
+        let timeoutId;
+
+        function display(){
+          const massageElement = document.querySelector('.button-js');
+          massageElement.innerHTML = 'Added Sucessfully';
+
+          clearTimeout(timeoutId);
+
+          setTimeout(function(){
+            massageElement.innerHTML='';
+          }, 2000);
+        }
+    </script>
+  </body>
+</html>
