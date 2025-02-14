@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variables</title>
+  </head>
+  <body>
+    <script>
+      
+       [
+        'make dinner',
+        'wash dishes',
+        'watch youtube'
+      ].forEach((value, index) => {
+        if (value === 'wash dishes') {
+          return;
+        }
+
+        console.log(index);
+        console.log(value);
+      });
+      
+/*
+      const add = function() {
+        console.log(2 + 3);
+      };
+
+      add();
+      add();
+
+      function runTwice(fun) {
+        fun();
+        fun();
+      }
+
+      runTwice(function() {
+        console.log('12b');
+      });
+      
+      runTwice(add);
+      */
+    </script>
+  </body>
+</html>
