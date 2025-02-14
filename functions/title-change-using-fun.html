@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Feature</title>
+  </head>
+  <body>
+
+      <button onclick="
+        messages++;
+      ">Add</button>
+
+    <button onclick="
+        messages--;
+      ">Remove</button>
+
+    <script>
+      /*
+      setInterval(function(){
+           if (document.title === 'App') {
+          document.title = '(2) New messages';
+        } else {
+          document.title = 'App';
+        }
+      }, 1000);
+      */
+
+      let messages = 2;
+
+      setInterval(function() {
+        if (document.title === 'App') {
+          document.title = `(${messages}) New messages`;
+        } else {
+          document.title = 'App';
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
