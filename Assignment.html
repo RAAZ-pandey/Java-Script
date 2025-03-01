@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>College Event Portal</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #ffffff;
+            --text-color: #333333;
+        }
+
+        .dark-mode {
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        #countdown {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                text-align: center;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('registration')">Register</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+        <button id="themeToggle" onclick="toggleTheme()">Dark Mode</button>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="container">
+        <h1>Upcoming Events</h1>
+        <div id="events-container"></div>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="container hidden">
+        <h2>Event Registration</h2>
+        <form id="registrationForm" onsubmit="return validateForm(event)">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}">
+            <select required>
+                <option value="">Select Event</option>
+                <option>Tech Symposium</option>
+                <option>Cultural Fest</option>
+                <option>Sports Meet</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container hidden">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return validateContactForm(event)">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script>
+        // Event Data
+        const events = [
+            {
+                title: "TCS Workshop",
+                date: "2025-03-15T09:00:00",
+                description: "Annual technology conference featuring industry leaders",
+                venue: "MAC Bidholi"
+            },
+            {
+                title: "Spandan Fest",
+                date: "2025-04-20T10:00:00",
+                description: "Multi-cultural festival showcasing student talents",
+                venue: "College Grounds Kandoli"
+            }
+        ];
+
+        // Initialize Events
+        function renderEvents() {
+            const container = document.getElementById('events-container');
+            container.innerHTML = events.map(event => `
+                <div class="event-card">
+                    <h3>${event.title}</h3>
+                    <p>📅 ${new Date(event.date).toLocaleDateString()}</p>
+                    <p>${event.description}</p>
+                    <p>📍 ${event.venue}</p>
+                </div>
+            `).join('');
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const nextEvent = new Date(events[0].date);
+            const now = new Date();
+            const diff = nextEvent - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('countdown').innerHTML = `
+                Next Event: ${events[0].title} starts in 
+                ${days}d ${hours}h ${minutes}m
+            `;
+        }
+
+        // Form Validation
+        function validateForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            if(form.checkValidity()) {
+                alert('Registration Successful!');
+                form.reset();
+                showSection('home');
+            }
+            return false;
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Section Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.toggle('hidden', section.id !== sectionId);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEvents();
+            setInterval(updateCountdown, 1000);
+            if(localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
+        });
+    </script>
+</body>
+</html>
