@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>College Event Portal</title>
+    <link rel="stylesheet" href="event.css">
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('registration')">Register</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+        <button id="themeToggle" onclick="toggleTheme()">Dark Mode</button>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="container">
+        <h1>Upcoming Events</h1>
+        <div id="events-container"></div>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="container hidden">
+        <h2>Event Registration</h2>
+        <form id="registrationForm" onsubmit="return validateForm(event)">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}">
+            <select required>
+                <option value="">Select Event</option>
+                <option>Tech Symposium</option>
+                <option>Cultural Fest</option>
+                <option>Sports Meet</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container hidden">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return validateContactForm(event)">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script src="event.js"></script>
+</body>
+</html>
